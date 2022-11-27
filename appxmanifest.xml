@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+
+  <Identity
+    Name="MyCompany.MySuite.MyApp"
+    Version="1.0.0.0"
+    Publisher="CN=MyCompany, O=MyCompany, L=MyCity, S=MyState, C=MyCountry"
+    ProcessorArchitecture="x64"
+  />
+  <Properties>
+    <DisplayName>My App</DisplayName>
+    <PublisherDisplayName>My Company</PublisherDisplayName>
+    <Description>My description.</Description>
+    <Logo>images\python-logo-only.png</Logo>
+  </Properties>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Dependencies>
+    <TargetDeviceFamily 
+      Name="Windows.Desktop" 
+      MinVersion="10.0.14316.0" 
+      MaxVersionTested="10.0.15063.0" 
+    />
+  </Dependencies>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust"/>
+  </Capabilities>
+  <Applications>
+    <Application
+      Id="MyConsoleApp1"
+      Executable="python-3.11.0-embed-amd64\python.exe"
+      EntryPoint="Windows.FullTrustApplication"
+      uap10:Subsystem="console"
+      uap10:SupportsMultipleInstances="true"
+      uap10:RuntimeBehavior="packagedClassicApp"
+      uap10:Parameters="-m src\my_console_app_1"
+    >
+      <uap:VisualElements
+        BackgroundColor="#464646"
+        DisplayName="My Console App 1"
+        Square150x150Logo="images\python-logo-only-150.png"
+        Square44x44Logo="images\python-logo-only-44.png"
+        Description="A useful description"
+      />
+      <!-- <Extensions>
+        <desktop:Extension Category="windows.toastNotificationActivation">
+          <desktop:ToastNotificationActivation ToastActivatorCLSID="70A0E7E4-7CC5-44CD-BDB2-D4B59546D953" /> 
+        </desktop:Extension>
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:ExeServer Executable="python-3.11.0-embed-amd64\python.exe" Arguments="-m __my_console_app_1">
+              <com:Class Id="70A0E7E4-7CC5-44CD-BDB2-D4B59546D953" />
+            </com:ExeServer>
+          </com:ComServer>
+        </com:Extension>
+      </Extensions> -->
+    </Application>
+  </Applications>
+</Package>
